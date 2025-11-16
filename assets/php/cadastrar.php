@@ -9,17 +9,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Verifica se o email já está cadastrado
     if (empty($nome) || empty($email) || empty($senha)) {
-        header("Location: /login_moderno/login.html?erro=campos_vazios");
+        header("Location: /login_moderno/index.html?erro=campos_vazios");
         exit();
     }
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        header("Location: /login_moderno/login.html?erro=email_invalido");
+        header("Location: /login_moderno/index.html?erro=email_invalido");
         exit();
     }
     
     if (strlen($senha) < 6) {
-        header("Location: /login_moderno/login.html?erro=senha_curta");
+        header("Location: /login_moderno/index.html?erro=senha_curta");
         exit();
     }
 
@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($stmt->num_rows > 0) {
         $stmt->close();
         $conn->close();
-        header("Location: /login_moderno/login.html?erro=email_existente");
+        header("Location: /login_moderno/index.html?erro=email_existente");
         exit();
     }
     $stmt->close();
@@ -51,12 +51,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($stmt->execute()) {
         $stmt->close();
         $conn->close();
-        header("Location: /login_moderno/login.html?sucesso=cadastro_realizado");
+        header("Location: /login_moderno/index.html?sucesso=cadastro_realizado");
         exit();
     } else {
         $stmt->close();
         $conn->close();
-        header("Location: /login_moderno/login.html?erro=erro_cadastro");
+        header("Location: /login_moderno/index.html?erro=erro_cadastro");
         exit();
     }
 } else {

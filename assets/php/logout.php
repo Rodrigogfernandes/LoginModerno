@@ -17,7 +17,7 @@ if (ini_get("session.use_cookies")) {
 session_destroy();
 
 // Redireciona para a página de login
-header("Location: /login_moderno/login.html");
+header("Location: /login_moderno/index.html");
 exit();
 ?>
 
